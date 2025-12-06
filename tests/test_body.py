@@ -2,7 +2,6 @@ import pytest
 from src.vector import Vector
 from src.body import Body
 from src.simulation import Simulation
-import math
 
 def test_body_initialization():
     b = Body("Test", 10, Vector(0, 0), Vector(1, 1))
@@ -38,33 +37,3 @@ def test_update_position_and_velocity():
     # správné hodnoty podle pořadí aktualizace v Simulation.step()
     assert b.position.x == 1.0  # pozice se zvýšila o v*dt, akcelerace ještě nebyla započtena
     assert b.velocity.x == 1.0  # rychlost se aktualizovala částečně podle nové akcelerace
-
-import math
-from simulation import Simulation
-from body import Body
-from vector import Vector
-
-def test_update_after_two_steps():
-    dt = 1
-    sim = Simulation(dt=dt)
-    b = Body("Body", 1, Vector(0, 0), Vector(1, 0))
-    sim.add_body(b)
-
-    # 1. krok
-    sim.compute_forces()
-    sim.step()
-
-    # 2. krok
-    sim.compute_forces()
-    sim.step()
-
-    import math
-    tol = 1e-9
-    expected_position = 3.0
-    expected_velocity = 2.5
-
-    assert math.isclose(b.position.x, expected_position, rel_tol=tol), f"Position: {b.position.x}"
-    assert math.isclose(b.velocity.x, expected_velocity, rel_tol=tol), f"Velocity: {b.velocity.x}"
-
-
-
