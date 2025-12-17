@@ -4,13 +4,14 @@ from vector import Vector
 G = 6.67430e-11  # gravitační konstanta
 
 class Body:
-    def __init__(self, name, mass, position: Vector, velocity: Vector):
+    def __init__(self, name, mass, position: Vector, velocity: Vector, sim_color):
         self.name = name
         self.mass = float(mass)
         self.position = position
         self.velocity = velocity
         self.force = Vector(0, 0)
         self.acceleration = Vector(0, 0)
+        self.sim_color = sim_color
 
     def add_force(self, other):
         """Přidá gravitační sílu působící od 'other'"""
@@ -38,7 +39,6 @@ class Body:
         self.acceleration = new_acceleration
         # aktualizace rychlosti (budeme potřebovat novou sílu po compute_forces)
         self.velocity += old_acceleration * (0.5 * dt)  # částečný update, dokončeno po recompute_forces
-        # force reset bude proveden až po výpočtu v Simulation.step()
 
     def reset_force(self):
         self.force = Vector(0.0, 0.0)

@@ -1,29 +1,36 @@
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
-def animate_trajectories(positions_dict, interval=50, save_path=None):
+def animate_trajectories(positions_dict, interval, save_path=None, colors=None):
     fig, ax = plt.subplots()
     ax.set_aspect('equal')
     ax.set_xlabel("X [m]")
     ax.set_ylabel("Y [m]")
 
-    # compute limits
+ # compute global limits once
     all_x = [p.x for pos in positions_dict.values() for p in pos]
     all_y = [p.y for pos in positions_dict.values() for p in pos]
-    margin = 0.1
-    xmin, xmax = min(all_x)*(1-margin), max(all_x)*(1+margin)
-    ymin, ymax = min(all_y)*(1-margin), max(all_y)*(1+margin)
-    ax.set_xlim(xmin, xmax)
-    ax.set_ylim(ymin, ymax)
+
+    xmin, xmax = min(all_x), max(all_x)
+    ymin, ymax = min(all_y), max(all_y)
+
+    span = max(xmax - xmin, ymax - ymin)
+
+    ax.set_xlim(xmin - 0.1*span, xmax + 0.1*span)
+    ax.set_ylim(ymin - 0.1*span, ymax + 0.1*span)
 
     # create lines and points
     lines = {}
     points = {}
+
     for name in positions_dict:
-        line, = ax.plot([], [], label=name)
-        point, = ax.plot([], [], 'o')
+        c = colors.get(name, 'black') if colors else 'black'
+
+        line, = ax.plot([], [], label=name, color=c)
+        point, = ax.plot([], [], 'o', color=c)
         lines[name] = line
         points[name] = point
+
     ax.legend()
 
     def update(frame):
