@@ -1,7 +1,7 @@
 import math
 from vector import Vector
 
-G = 6.67430e-11  # gravitační konstanta
+G = 6.67430e-11  # gravitační konstanta pro vypocty
 
 class Body:
     def __init__(self, name, mass, position: Vector, velocity: Vector, sim_color):
@@ -18,8 +18,8 @@ class Body:
         distance = other.position - self.position
         r = distance.mag()
         if r == 0:
-            return
-        force_magnitude = G * self.mass * other.mass / r**2
+            return # vyhnout se dělení nulou
+        force_magnitude = G * self.mass * other.mass / r**2 #neupraveny newtonuv gravitacni zakon, bylo by vhodne pridat softening
         force = distance.normalize() * force_magnitude
         self.force += force
 

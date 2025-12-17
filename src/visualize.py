@@ -45,6 +45,6 @@ def animate_trajectories(positions_dict, interval, save_path=None, colors=None):
                         interval=interval, blit=True)
 
     if save_path:
-        ani.save(save_path, writer='ffmpeg', fps=30, dpi=200)
+        ani.save(save_path, writer='ffmpeg', fps=30, dpi=200) #nefunkcni
     else:
         plt.show()
