@@ -8,7 +8,7 @@ class Simulation:
     def add_body(self, body):
         self.bodies.append(body)
 
-    def compute_forces(self): #vypocita vzjaemne gravitacni sily mezi vsemi objekty
+    def compute_forces(self): #vypocita vzajemne gravitacni sily mezi vsemi objekty
         for body in self.bodies:
             body.reset_force()
         for body in self.bodies:

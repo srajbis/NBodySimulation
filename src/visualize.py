@@ -1,15 +1,29 @@
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
-def animate_trajectories(positions_dict, interval, save_path=None, colors=None):
-    fig, ax = plt.subplots()
+def animate_trajectories(positions_dict, interval, save_path=None, colors=None): #save_path a colors jsou volitelne parametry
+    fig, ax = plt.subplots() #inicializace grafickeho okna
+    
+    # nastaveni a pojmenovani os
     ax.set_aspect('equal')
     ax.set_xlabel("X [m]")
     ax.set_ylabel("Y [m]")
 
- # compute global limits once
-    all_x = [p.x for pos in positions_dict.values() for p in pos]
-    all_y = [p.y for pos in positions_dict.values() for p in pos]
+    #výpočet globální limitů x a y os
+    all_x = []  # vytvořím prázdný list pro všechny x souřadnice
+    # 1. projdu seznamy pozic pro každé těleso
+    for pos in positions_dict.values():
+        # 2. v každém seznamu projdu jednotlivé prvky (Vektory)
+        for p in pos:
+            # 3. uložím si jen souřadnici X
+            all_x.append(p.x)
+    
+
+    # obdobně pro y souřadnice
+    all_y = []
+    for pos in positions_dict.values():
+        for p in pos:
+            all_y.append(p.y)
 
     xmin, xmax = min(all_x), max(all_x)
     ymin, ymax = min(all_y), max(all_y)

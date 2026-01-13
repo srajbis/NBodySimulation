@@ -25,16 +25,35 @@ sim.add_body(Sun1) #pridani objektu do simulace
 sim.add_body(Sun2)
 sim.add_body(Planet)
 
-positions = {b.name: [] for b in sim.bodies}
+positions = {} # vytvoření prázdného SLOVNÍKU
+for b in sim.bodies: # sim.bodies je seznam všech těles přidaných v simulaci
+    # Vytvoření prázdného SEZNAMU pod jménem tělesa (klíčem)
+    positions[b.name] = []
+# vysledna struktura je seznam prazdnych seznamu, zabaleny ve slovniku
 
-n_steps = 24 * 365 *1  # 1 year of one hour steps
+
+n_steps = 24 * 365 *10  # 10 years of one hour steps
 
 for step in range(n_steps):
-    sim.step()                   
-    for b in sim.bodies:
-        positions[b.name].append(Vector(b.position.x, b.position.y))
+    sim.step()  # Posuneme vesmír o jeden krok simulace, .step definovan v simulation.py
+    
+    # Teď musíme uložit aktuální polohy všech těles
+    for b in sim.bodies: 
+        aktualni_jmeno = b.name           # zjistíme jméno tělesa
+        aktualni_seznam = positions[aktualni_jmeno]  # najdeme ten správný seznam pro aktualni těleso
+        
+        # Vytvoříme NOVÝ objekt s aktuálními čísly
+        nova_pozice = Vector(b.position.x, b.position.y) #.position je definovano v body.py. .x a .y definovano ve vector.py
+        
+        # Přidáme tuhle kopii do seznamu
+        aktualni_seznam.append(nova_pozice)
 
-colors = {b.name: b.sim_color for b in sim.bodies} #z objektu Body vezme jmeno a barvu pro vizualizaci
+colors = {}  # vytvoříme prázdný slovník, do ktereho ulozime informace z nasledujiciho for cyklu
+for b in sim.bodies: 
+    jmeno = b.name
+    barva = b.sim_color
+    # vložení jména (klíč) a k němu odpovídající barvy (hodnota) do slovníku
+    colors[jmeno] = barva
 
 animate_trajectories(positions, interval=1, colors = colors) #volani fce ze souboru visualize.py
 print("Simulation complete.")
