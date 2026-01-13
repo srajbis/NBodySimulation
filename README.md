@@ -23,6 +23,11 @@ Open your terminal and run the following commands:
 
 ```bash
 git clone https://github.com/srajbis/NBodySimulation
+```
+
+Go to folder NBodySimulation
+
+```bash
 cd NBodySimulation
 ```
 
@@ -35,7 +40,7 @@ python -m venv venv
 ```
 
 ```bash
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 
@@ -43,7 +48,7 @@ pip install requirements.txt
 Launch the main script with this command:
 
 ```bash
-python NBodySimulation/src/main.py
+python src/main.py
 ```
 
 
