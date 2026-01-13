@@ -33,11 +33,18 @@ cd NBodySimulation
 
 
 ### 2. Install Required Packages
-It is recommended to use a virtual environment. Install the necessary dependencies using:
+It is recommended to use a virtual environment:
 
 ```bash
 python -m venv venv
 ```
+Activate the enviroment:
+
+```bash
+.\venv\Scripts\activate
+```
+
+Install the necessary dependencies using:
 
 ```bash
 pip install -r requirements.txt
