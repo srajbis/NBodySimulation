@@ -21,17 +21,30 @@ Follow these steps to get the simulation running on your local machine:
 ### 1. Clone the Repository
 Open your terminal and run the following commands:
 
+```bash
 git clone https://github.com/srajbis/NBodySimulation
 cd NBodySimulation
+```
+
 
 ### 2. Install Required Packages
 It is recommended to use a virtual environment. Install the necessary dependencies using:
 
-pip install matplotlib
+```bash
+python -m venv venv
+```
+
+```bash
+pip install requirements.txt
+```
+
 
 ### 3. Run the Simulation
 Launch the main script with this command:
 
-python main.py
+```bash
+python NBodySimulation/src/main.py
+```
+
 
 > NOTE: Body properties (mass, initial position, velocity) can be edited directly in the main.py file to experiment with different orbital setups.
