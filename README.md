@@ -4,32 +4,34 @@ This project is a Python simulation of a gravitational **three-body system**, fe
 
 ## Features
 
-- Simulation of gravitational interactions between multiple bodies
-- Accurate position and velocity updates using Velocity Verlet method
-- Trajectory animation using `matplotlib`
-- Easily extendable to more bodies or different initial conditions
+- **Multi-body Simulation:** Gravitational interactions between multiple celestial bodies.
+- **Numerical Stability:** Accurate position and velocity updates using the Velocity Verlet method.
+- **Visualization:** Real-time trajectory animation using `matplotlib`.
+- **Extensibility:** Easily extendable to more bodies or different initial conditions.
 
 ## Requirements
 
 - Python 3.7+
-- `matplotlib`
+- `matplotlib` library
 
-How to run the simulation:
-1) Clone GitHub repo
+## How to Run the Simulation
 
-```bash
-   git clone [https://github.com/srajbis/NBodySimulation](https://github.com/srajbis/NBodySimulation)
-   cd NBodySim
+Follow these steps to get the simulation running on your local machine:
 
-2) Install the required packages using:
+### 1. Clone the Repository
+Open your terminal and run the following commands:
 
-```bash
+git clone https://github.com/srajbis/NBodySimulation
+cd NBodySimulation
+
+### 2. Install Required Packages
+It is recommended to use a virtual environment. Install the necessary dependencies using:
+
 pip install matplotlib
 
-3) Run simulation with this command:
+### 3. Run the Simulation
+Launch the main script with this command:
 
-```bash
 python main.py
 
-NOTE: Body properties can be edited in main.py file
-
+> NOTE: Body properties (mass, initial position, velocity) can be edited directly in the main.py file to experiment with different orbital setups.
