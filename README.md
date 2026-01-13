@@ -103,11 +103,10 @@ pytest
 ```
 The tests specifically check:
 
-Accurate force summation during multi-body interactions.
+Correct vector operations
 
-Correct vector normalization.
+Correct working of Body class, force interactions and simulation step
 
-Handling of edge cases, such as preventing division by zero during body collisions.
 
 
 
