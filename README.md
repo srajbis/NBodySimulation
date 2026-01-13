@@ -14,7 +14,22 @@ This project is a Python simulation of a gravitational **three-body system**, fe
 - Python 3.7+
 - `matplotlib`
 
-Install the required packages using:
+How to run the simulation:
+1) Clone GitHub repo
+
+```bash
+   git clone [https://github.com/srajbis/NBodySimulation](https://github.com/srajbis/NBodySimulation)
+   cd NBodySim
+
+2) Install the required packages using:
 
 ```bash
 pip install matplotlib
+
+3) Run simulation with this command:
+
+```bash
+python main.py
+
+NOTE: Body properties can be edited in main.py file
+
