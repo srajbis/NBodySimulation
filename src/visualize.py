@@ -11,20 +11,16 @@ def animate_trajectories(positions_dict, interval, save_path=None, colors=None):
 
     #výpočet globální limitů x a y os
     all_x = []  # vytvořím prázdný list pro všechny x souřadnice
+    all_y = []  # to stejny pro y souřadnice
     # 1. projdu seznamy pozic pro každé těleso
     for pos in positions_dict.values():
         # 2. v každém seznamu projdu jednotlivé prvky (Vektory)
         for p in pos:
-            # 3. uložím si jen souřadnici X
+            # 3. uložím si souřadnici x a y
             all_x.append(p.x)
-    
-    # obdobně pro y souřadnice
-    all_y = []
-    for pos in positions_dict.values():
-        for p in pos:
-            all_y.append(p.y)
+            all_y.append(p.y)   
 
-    xmin, xmax = min(all_x), max(all_x) #vícenanásobné přiřazení
+    xmin, xmax = min(all_x), max(all_x) #vícenanásobné přiřazení, python resi pomoci tuplu
     ymin, ymax = min(all_y), max(all_y)
 
     span = max(xmax - xmin, ymax - ymin)
@@ -101,14 +97,14 @@ def animate_trajectories(positions_dict, interval, save_path=None, colors=None):
     # Zjistíme počet snímků podle délky historie (všechny seznamy jsou stejně dlouhé)
     first_key = list(positions_dict.keys())[0]
     total_frames = len(positions_dict[first_key])
-
-    # Tady voláme FuncAnimation - všimni si, že 'update' už nemá další parametry
+   
+    # trida nahrana z matplotlib
     ani = FuncAnimation(fig, update, frames=total_frames, interval=interval, blit=True)
 
     # 6. ZOBRAZENÍ NEBO ULOŽENÍ
     if save_path:
         print(f"Ukládám animaci do: {save_path}")
-        # writer='ffmpeg' vyžaduje mít v počítači nainstalovaný program ffmpeg
+        # writer='ffmpeg' vyžaduje mít v počítači nainstalovaný program ffmpeg (rozpracovano)
         ani.save(save_path, writer='ffmpeg', fps=30)
     else:
         # Pokud cestu nezadáme, jen otevřeme okno s grafem
