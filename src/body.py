@@ -15,7 +15,7 @@ class Body:
 
     def add_force(self, other):
         """Přidá gravitační sílu působící od 'other'"""
-        distance = other.position - self.position
+        distance = other.position - self.position #diky definici odecitani ve vector.py
         r = distance.mag()
         if r == 0:
             return # vyhnout se dělení nulou
